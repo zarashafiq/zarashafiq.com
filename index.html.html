@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zara Shafiq · QA Engineer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #fafaf8;
+    --paper-soft: #f2f2ed;
+    --ink: #0d0d0d;
+    --ink-soft: #3a3a3a;
+    --ink-muted: #6b6b6b;
+    --ink-faded: #b8b8b4;
+    --rule: #e0e0db;
+    --rule-strong: #c8c8c3;
+    --highlight: #fff58a;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+    padding: 56px 32px 80px;
+  }
+
+  .page { max-width: 720px; margin: 0 auto; }
+
+  /* MASTHEAD */
+  .masthead {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+
+  .cats {
+    margin-bottom: 32px;
+    display: flex;
+    color: var(--ink);
+  }
+
+  .cats svg {
+    width: 320px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+  }
+
+  .masthead-top .right { color: var(--ink-faded); }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 68px;
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.038em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .hero {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+
+  .hero .highlight {
+    background: linear-gradient(transparent 62%, var(--highlight) 62%);
+    color: var(--ink);
+    font-style: italic;
+    padding: 0 2px;
+  }
+
+  .currently {
+    margin-top: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .currently .dot {
+    width: 6px;
+    height: 6px;
+    background: #1a9d4a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(26, 157, 74, 0.18);
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+
+  .currently .label {
+    color: var(--ink-faded);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 10px;
+    margin-right: 8px;
+  }
+
+  .currently .text { color: var(--ink-soft); }
+
+  .meta-links {
+    margin-top: 28px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: lowercase;
+  }
+
+  .meta-links a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: all 0.18s;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .meta-links a:hover { background: var(--ink); color: var(--paper); }
+  .meta-links a::before { content: '→ '; color: var(--ink-muted); transition: color 0.18s; }
+  .meta-links a:hover::before { color: var(--paper); }
+
+  /* METRICS STRIP */
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 72px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .metric {
+    flex: 1 0 calc(50% - 12px);
+    min-width: 100px;
+  }
+
+  @media (min-width: 560px) {
+    .metric { flex: 1 1 0; }
+  }
+
+  .metric .num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .metric .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    margin-top: 8px;
+  }
+
+  /* SECTIONS */
+  section { margin-bottom: 72px; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    text-transform: lowercase;
+    color: var(--ink);
+    margin-bottom: 40px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+  }
+
+  .section-label::before {
+    content: '—';
+    color: var(--ink);
+    margin-right: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin-left: 12px;
+  }
+
+  /* CASES */
+  .case {
+    padding: 28px 0 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .case:last-child { border-bottom: none; padding-bottom: 0; }
+  .case:first-of-type { padding-top: 0; }
+
+  .case-meta {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+
+  .case-meta > span { margin-right: 8px; }
+  .case-meta .id { color: var(--ink); font-weight: 600; }
+  .case-meta .divider { color: var(--ink-faded); }
+
+  .case h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+    max-width: 580px;
+  }
+
+  .case-body {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+
+  .case-body p { margin-bottom: 14px; }
+  .case-body p:last-of-type { margin-bottom: 18px; }
+
+  .case-body .takeaway {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 16px;
+    border-left: 2px solid var(--ink);
+    padding-left: 14px;
+    margin: 18px 0;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: lowercase;
+    color: var(--ink-muted);
+    margin-top: 22px;
+  }
+
+  .case-tag {
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  .case-tag::before {
+    content: '#';
+    color: var(--ink-faded);
+  }
+
+  /* AI QA section */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 600px;
+  }
+
+  .ai-row {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--rule);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+  }
+  .ai-row:last-child { border-bottom: none; }
+
+  .ai-row .what {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+    padding-top: 4px;
+  }
+
+  .ai-row .detail {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  /* SELECTED BUGS / BUG REPORTS */
+  .bugs-intro {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .bug-list {
+    list-style: none;
+  }
+
+  .bug {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--rule);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+
+  .bug:last-child { border-bottom: none; }
+
+  .bug .where {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+  }
+
+  .bug .what {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* Detailed bug report card */
+  .bug-report {
+    background: var(--paper-soft);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .bug-report:last-child { margin-bottom: 0; }
+
+  .bug-report .report-head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .bug-report .report-head > * { margin-right: 10px; }
+
+  .bug-report .severity {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .bug-report .severity.critical { background: #c4392b; color: #fff; }
+  .bug-report .severity.high { background: #d4801a; color: #fff; }
+  .bug-report .severity.medium { background: #d4b41a; color: #1a1a1a; }
+
+  .bug-report .report-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  .bug-report .report-context {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-left: auto;
+  }
+
+  .bug-report h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .bug-report .report-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .bug-report .report-grid dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    padding-top: 2px;
+  }
+
+  .bug-report .report-grid dd ol,
+  .bug-report .report-grid dd ul {
+    padding-left: 18px;
+  }
+
+  .bug-report .report-grid dd li {
+    margin-bottom: 4px;
+  }
+
+  /* TEST CASES */
+  .testcase {
+    background: var(--paper-soft);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .testcase .tc-head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .testcase .tc-head > * { margin-right: 12px; }
+
+  .testcase .tc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .testcase .tc-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+  }
+
+  .testcase .tc-title {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .testcase .tc-body {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .testcase .tc-body strong {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 2px;
+  }
+
+  /* CODE BLOCK */
+  .code-block {
+    margin-top: 36px;
+    max-width: 640px;
+    background: #11100e;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ARCHITECTURE DIAGRAM */
+  .diagram {
+    margin: 24px 0 8px;
+    padding: 24px 8px 16px;
+    border: 1px dashed var(--rule-strong);
+    border-radius: 4px;
+    max-width: 620px;
+  }
+
+  .diagram svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--ink);
+  }
+
+  .diagram-caption {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  .code-block {
+    margin-top: 36px;
+    max-width: 640px;
+    background: #11100e;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .code-head {
+    background: #1a1816;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #b8b4a8;
+    border-bottom: 1px solid #2a2724;
+  }
+
+  .code-lang { color: #888076; }
+  .code-file { color: #d4a574; }
+
+  .code-block pre {
+    padding: 18px 20px;
+    margin: 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #e8e4d8;
+  }
+
+  .code-block code .k { color: #c08bd4; }   /* keywords */
+  .code-block code .s { color: #d4a574; }   /* strings */
+  .code-block code .c { color: #6b6660; font-style: italic; } /* comments */
+  .code-block code .n { color: #8ab4d4; }   /* numbers */
+
+  /* OPINIONS */
+  .opinions-intro {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .opinion {
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .opinion h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .opinion p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* METHODOLOGY */
+  .methodology-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 32px;
+    max-width: 600px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .methodology-list .item {
+    color: var(--ink-soft);
+  }
+
+  .methodology-list .item strong {
+    color: var(--ink);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  /* CURRENTLY LEARNING */
+  .learning {
+    max-width: 600px;
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .learning p { margin-bottom: 14px; }
+  .learning p:last-child { margin-bottom: 0; }
+
+  .learning em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .learning ul {
+    list-style: none;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .learning ul li {
+    color: var(--ink-soft);
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .learning ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--ink-muted);
+  }
+
+  /* ABOUT */
+  .about-prose {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 600px;
+  }
+
+  .about-prose p { margin-bottom: 20px; }
+  .about-prose p:last-child { margin-bottom: 0; }
+
+  .about-prose em {
+    font-style: italic;
+    background: linear-gradient(transparent 62%, var(--highlight) 62%);
+    color: var(--ink);
+    padding: 0 2px;
+  }
+
+  .about-prose .personal {
+    color: var(--ink-muted);
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  /* STACK */
+  .stack-grid {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+  }
+
+  .stack-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 4px 0;
+  }
+
+  .stack-row .label {
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    padding-top: 4px;
+  }
+
+  .stack-row .label::after { content: ':'; color: var(--ink-faded); }
+  .stack-row .items { color: var(--ink-soft); line-height: 1.7; font-size: 13px; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+  }
+
+  .footer .cat-mini {
+    width: 28px;
+    height: 28px;
+    transform: rotate(8deg);
+    transition: transform 0.3s ease;
+  }
+
+  .footer .cat-mini:hover {
+    transform: rotate(-8deg);
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    body { padding: 36px 18px 56px; }
+    .page { max-width: 100%; }
+
+    /* Cats stay centered with the page */
+    .cats svg { width: 100%; max-width: 280px; }
+
+    /* Masthead */
+    h1 { font-size: 40px; letter-spacing: -0.03em; }
+    .hero { font-size: 19px; line-height: 1.45; }
+    .masthead-top { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .masthead-top > span { font-size: 10px; }
+    .meta-links { gap: 6px; }
+    .meta-links a { font-size: 10px; padding: 4px 9px; }
+
+    /* Metrics: 2x2 on mobile */
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 16px;
+      padding: 22px 0;
+    }
+    .metric { flex: none; min-width: 0; }
+    .metric .num { font-size: 28px; }
+    .metric .label { font-size: 9px; margin-top: 6px; }
+
+    /* Section labels */
+    .section-label {
+      font-size: 13px;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Case studies wrapped as cards on mobile */
+    section { margin-bottom: 48px; }
+
+    .case {
+      background: var(--paper-soft);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 22px 20px 24px;
+      margin-bottom: 16px;
+    }
+    .case:first-of-type { padding-top: 22px; }
+    .case:last-child { padding-bottom: 24px; }
+    .case { border-bottom: 1px solid var(--rule); }
+
+    .case h3 { font-size: 26px; line-height: 1.15; }
+    .case-body { font-size: 14px; }
+    .case-body .takeaway { font-size: 15px; }
+    .case-meta { font-size: 9px; gap: 8px; }
+
+    /* About / opinions */
+    .about-prose { font-size: 18px; }
+    .about-prose .personal { font-size: 16px; }
+    .opinion h4 { font-size: 22px; }
+    .opinion p { font-size: 14px; }
+    .opinions-intro { font-size: 15px; }
+    .learning { font-size: 17px; }
+    .learning ul { font-size: 13px; }
+
+    /* AI grid stacks */
+    .ai-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+      padding: 12px 0;
+    }
+
+    /* Methodology stacks */
+    .methodology-list { grid-template-columns: 1fr; gap: 14px; }
+    .methodology-list .item { font-size: 13px; }
+
+    /* Stack rows */
+    .stack-row { grid-template-columns: 1fr; gap: 4px; padding: 8px 0; }
+    .stack-row .label { padding-top: 12px; font-size: 10px; }
+    .stack-row .items { font-size: 12px; }
+
+    /* Bug reports */
+    .bug { grid-template-columns: 1fr; gap: 4px; }
+    .bug-report { padding: 20px 18px; }
+    .bug-report h4 { font-size: 18px; }
+    .bug-report .report-grid { grid-template-columns: 1fr; gap: 4px; }
+    .bug-report .report-grid dt { padding-top: 10px; }
+    .bug-report .report-context { margin-left: 0; font-size: 9px; }
+    .bug-report .severity { font-size: 9px; }
+    .bug-report .report-id { font-size: 10px; }
+
+    /* Test cases */
+    .testcase { padding: 16px 18px; }
+    .testcase .tc-title { font-size: 16px; }
+
+    /* Code block - shrink for mobile */
+    .code-block pre { font-size: 11px; padding: 14px 16px; }
+    .code-head { padding: 8px 14px; flex-wrap: wrap; gap: 6px; }
+    .code-lang, .code-file { font-size: 9px; }
+
+    /* Diagram - keep readable */
+    .diagram { padding: 16px 4px 12px; }
+    .diagram-caption { font-size: 9px; }
+
+    /* Footer */
+    .footer { font-size: 9px; }
+    .footer .cat-mini { width: 22px; height: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+
+    <div class="cats">
+      <svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cat 1: alert / curious - wide open eyes, small "o" mouth -->
+        <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 20 L42 8 L50 25 L88 25 L96 8 L108 20 C115 28 115 60 108 68 C100 75 38 75 30 68 C23 60 23 28 30 20 Z"/>
+          <circle cx="52" cy="40" r="3.5" fill="currentColor"/>
+          <circle cx="86" cy="40" r="3.5" fill="currentColor"/>
+          <circle cx="69" cy="55" r="2" fill="none"/>
+        </g>
+        <!-- Cat 2: sleepy / blinking - half-closed eyes (curved arcs), peaceful smile -->
+        <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(140, 0)">
+          <path d="M30 20 L42 8 L50 25 L88 25 L96 8 L108 20 C115 28 115 60 108 68 C100 75 38 75 30 68 C23 60 23 28 30 20 Z"/>
+          <path d="M46 42 Q52 38 58 42"/>
+          <path d="M80 42 Q86 38 92 42"/>
+          <path d="M62 54 Q69 58 76 54"/>
+        </g>
+        <!-- Cat 3: neutral / unimpressed - small dot eyes, flat straight mouth -->
+        <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(280, 0)">
+          <path d="M30 20 L42 8 L50 25 L88 25 L96 8 L108 20 C115 28 115 60 108 68 C100 75 38 75 30 68 C23 60 23 28 30 20 Z"/>
+          <circle cx="52" cy="40" r="1.8" fill="currentColor"/>
+          <circle cx="86" cy="40" r="1.8" fill="currentColor"/>
+          <line x1="60" y1="55" x2="78" y2="55"/>
+        </g>
+        <!-- Cat 4: dead / X eyes - X eyes, tiny tongue sticking out -->
+        <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(420, 0)">
+          <path d="M30 20 L42 8 L50 25 L88 25 L96 8 L108 20 C115 28 115 60 108 68 C100 75 38 75 30 68 C23 60 23 28 30 20 Z"/>
+          <path d="M47 36 L57 44 M47 44 L57 36"/>
+          <path d="M81 36 L91 44 M81 44 L91 36"/>
+          <path d="M65 53 L73 53 L73 60 Q69 63 65 60 Z" fill="currentColor"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="masthead-top">
+      <span>QA Engineer · Islamabad</span>
+      <span class="right">est. 2020</span>
+    </div>
+
+    <h1>Zara Shafiq</h1>
+
+    <p class="hero">
+      I'm a QA engineer. Four years finding <span class="highlight">the bugs other people miss</span>, in AI products, virtual collaboration software, and regulated healthcare.
+    </p>
+
+    <div class="currently">
+      <span class="dot"></span>
+      <span class="label">currently</span>
+      <span class="text">solo QA on a new Electron desktop product</span>
+    </div>
+
+    <div class="meta-links">
+      <a href="mailto:zarashafiq195@gmail.com">email</a>
+      <a href="https://linkedin.com/in/zara-shafiq">linkedin</a>
+      <a href="https://github.com/zarashafiq/qa-portfolio">github</a>
+      <a href="#">resume</a>
+    </div>
+  </header>
+
+  <!-- METRICS STRIP -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="num">4+</div>
+      <div class="label">years in QA</div>
+    </div>
+    <div class="metric">
+      <div class="num">2500+</div>
+      <div class="label">test cases written</div>
+    </div>
+    <div class="metric">
+      <div class="num">500+</div>
+      <div class="label">defects tracked</div>
+    </div>
+    <div class="metric">
+      <div class="num">130+</div>
+      <div class="label">automation specs</div>
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <section>
+    <div class="section-label">selected work</div>
+
+    <article class="case">
+      <div class="case-meta">
+        <span class="id">CASE 01</span>
+        <span class="divider">·</span>
+        <span>Healthcare</span>
+        <span class="divider">·</span>
+        <span>2022</span>
+      </div>
+      <h3>The billing edge case that almost shipped</h3>
+      <div class="case-body">
+        <p>
+          Junior QA on a US-based EHR product (the therapy module: appointment scheduling, clinical notes, patient records, billing). HIPAA-regulated. Release bar of 99% defect-free.
+        </p>
+        <p>
+          I was working through a billing flow during a release cycle. Therapist completes a session, the system calculates the charge, the claim gets generated. For a standard session the numbers looked correct. When I switched to a less common session type (one that hit a specific billing-code boundary), the calculated charge didn't match what I worked out on paper.
+        </p>
+        <p>
+          I wrote out the expected charges across each scenario, ran them through the system one by one, and confirmed the mismatch was consistent and reproducible. Filed the bug with the math, the scenarios, and screenshots. Looped in the dev lead the same day.
+        </p>
+        <p>
+          Fixed before release. If it had shipped, therapists using that session type would have been under-billing for the work they'd done. In a regulated healthcare product, that's both a revenue and a compliance issue.
+        </p>
+        <p class="takeaway">
+          Never trust the UI when the math is doing the actual work. If a calculation looks right on screen, that's exactly when I check it by hand.
+        </p>
+      </div>
+      <div class="case-tags">
+        <span class="case-tag">ehr</span>
+        <span class="case-tag">billing</span>
+        <span class="case-tag">hipaa</span>
+        <span class="case-tag">manual</span>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <span class="id">CASE 02</span>
+        <span class="divider">·</span>
+        <span>EdTech</span>
+        <span class="divider">·</span>
+        <span>2023&ndash;24</span>
+      </div>
+      <h3>Testing six products on real hardware, not just dev environments</h3>
+      <div class="case-body">
+        <p>
+          Manual QA at an EdTech company building a connected ecosystem: an AI quiz generator, an AI transcription and translation service, a video conferencing tool, a lesson capture platform, an NFC-badge notification system, and a lesson builder. All of it ran across web, Android, and Android-based interactive touchscreen displays.
+        </p>
+        <p>
+          The default at the company was to test on dev environments and emulators, because real hardware was slower and more annoying to set up. I pushed to test on the actual touchscreen units instead, because the bugs that mattered were the ones that showed up only on real hardware: touch input latency under heavy load, NFC tap reliability with real badges, audio routing on the embedded Android, cross-device sync between a touchscreen and a teacher's mobile.
+        </p>
+        <p>
+          That choice meant I had to context-switch fast (a hardware bug in the morning, an AI accuracy check at lunch, a Stripe webhook validation in the afternoon) and learn each product's edges quickly. Caught wrong-question bugs in the AI quiz generator, transcription errors in the captioning tool, and a Stripe billing edge case where a subscription state transition wasn't firing the right webhook. The Stripe flow was where I learned subscription testing the hard way: every plan transition, every webhook event, every failed payment branch needed its own case.
+        </p>
+        <p class="takeaway">
+          Emulators tell you what the product does in theory. Real hardware tells you what it does in the room with the people who'll actually use it.
+        </p>
+      </div>
+      <div class="case-tags">
+        <span class="case-tag">edtech</span>
+        <span class="case-tag">hardware</span>
+        <span class="case-tag">android</span>
+        <span class="case-tag">ai-features</span>
+        <span class="case-tag">stripe</span>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-meta">
+        <span class="id">CASE 03</span>
+        <span class="divider">·</span>
+        <span>Real-time AI</span>
+        <span class="divider">·</span>
+        <span>2026</span>
+      </div>
+      <h3>Stress-testing a meeting room we couldn't afford to stress-test</h3>
+      <div class="case-body">
+        <p>
+          Solo QA on a new Electron-based virtual office product. One of the meeting rooms routes through a production dialer for sales calls and customer demos. Customers were starting to ask how many concurrent dialer sessions the room could support. Internally, no one had a real answer.
+        </p>
+        <p>
+          Testing with real dialers at scale would have been expensive: real phone numbers, real per-minute call costs, real load on the dialer provider. My local machine also had hardware limits, so I couldn't just spin up more instances locally.
+        </p>
+        <p>
+          I worked through the test design in pieces. First, I substituted screen-share-with-sound for the real dialer. Both flow through the same LiveKit publisher pipeline under the hood, so the load on the backend would be equivalent without the per-call cost. Next, I moved off my local machine onto GitHub Actions runners to get past the hardware limits (36 runners in parallel). Then I asked the dev team to add a flag that allowed multiple instances of the app to run on the same machine, so a single runner could carry more than one user. Finally, I ran the test under realistic 3-window load (workspace + dialer + meeting room running simultaneously per instance), so the numbers reflected actual user behavior, not a synthetic baseline.
+        </p>
+        <p>
+          Verified 33 concurrent screen-share-with-sound publishers under production-equivalent load. The product team had a real number to give to customers, and a real understanding of where capacity actually sat (higher than the team had assumed). The setup is reusable, so when engineering ships changes to the real-time layer we can re-run the test instead of guessing.
+        </p>
+
+        <div class="diagram">
+          <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+            <g stroke="currentColor" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+
+              <!-- Tier 1: Test harness -->
+              <rect x="170" y="20" width="260" height="44" stroke-width="1.6"/>
+              <text x="300" y="38" text-anchor="middle" fill="currentColor" stroke="none" font-size="11" font-weight="500">Playwright test harness</text>
+              <text x="300" y="54" text-anchor="middle" fill="currentColor" stroke="none" font-size="9" opacity="0.7">dispatches to 36 runners</text>
+
+              <!-- Connector from harness down -->
+              <line x1="300" y1="64" x2="300" y2="92" stroke-width="1.4"/>
+              <polyline points="294,86 300,94 306,86" stroke-width="1.4"/>
+
+              <!-- Bracket showing 36 multiplier -->
+              <line x1="50" y1="102" x2="50" y2="200" stroke-width="1.4"/>
+              <line x1="50" y1="102" x2="60" y2="102" stroke-width="1.4"/>
+              <line x1="50" y1="200" x2="60" y2="200" stroke-width="1.4"/>
+              <text x="36" y="155" text-anchor="middle" fill="currentColor" stroke="none" font-size="11" font-weight="500" transform="rotate(-90 36 155)">36 x</text>
+
+              <!-- Runner 1 -->
+              <rect x="80" y="102" width="140" height="98" stroke-width="1.4"/>
+              <text x="150" y="120" text-anchor="middle" fill="currentColor" stroke="none" font-size="10" font-weight="500">runner_01</text>
+              <line x1="80" y1="128" x2="220" y2="128" stroke-width="1" opacity="0.4"/>
+              <text x="150" y="146" text-anchor="middle" fill="currentColor" stroke="none" font-size="9">3 x app instance</text>
+              <text x="150" y="164" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">workspace</text>
+              <text x="150" y="177" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ dialer</text>
+              <text x="150" y="190" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ meeting room</text>
+
+              <!-- Runner 2 -->
+              <rect x="234" y="102" width="140" height="98" stroke-width="1.4"/>
+              <text x="304" y="120" text-anchor="middle" fill="currentColor" stroke="none" font-size="10" font-weight="500">runner_02</text>
+              <line x1="234" y1="128" x2="374" y2="128" stroke-width="1" opacity="0.4"/>
+              <text x="304" y="146" text-anchor="middle" fill="currentColor" stroke="none" font-size="9">3 x app instance</text>
+              <text x="304" y="164" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">workspace</text>
+              <text x="304" y="177" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ dialer</text>
+              <text x="304" y="190" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ meeting room</text>
+
+              <!-- ellipsis -->
+              <text x="402" y="158" text-anchor="middle" fill="currentColor" stroke="none" font-size="16" letter-spacing="0.15em">...</text>
+
+              <!-- Runner 36 -->
+              <rect x="430" y="102" width="140" height="98" stroke-width="1.4"/>
+              <text x="500" y="120" text-anchor="middle" fill="currentColor" stroke="none" font-size="10" font-weight="500">runner_36</text>
+              <line x1="430" y1="128" x2="570" y2="128" stroke-width="1" opacity="0.4"/>
+              <text x="500" y="146" text-anchor="middle" fill="currentColor" stroke="none" font-size="9">3 x app instance</text>
+              <text x="500" y="164" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">workspace</text>
+              <text x="500" y="177" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ dialer</text>
+              <text x="500" y="190" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" opacity="0.8">+ meeting room</text>
+
+              <!-- Connectors down to bus -->
+              <line x1="150" y1="200" x2="150" y2="228" stroke-width="1.4"/>
+              <line x1="304" y1="200" x2="304" y2="228" stroke-width="1.4"/>
+              <line x1="500" y1="200" x2="500" y2="228" stroke-width="1.4"/>
+
+              <!-- Bus line + downstream arrow -->
+              <line x1="150" y1="228" x2="500" y2="228" stroke-width="1.4"/>
+              <line x1="325" y1="228" x2="325" y2="244" stroke-width="1.4"/>
+              <polyline points="319,238 325,246 331,238" stroke-width="1.4"/>
+
+              <!-- Tier 3: LiveKit pipeline -->
+              <rect x="120" y="248" width="410" height="44" stroke-width="1.6"/>
+              <text x="325" y="266" text-anchor="middle" fill="currentColor" stroke="none" font-size="11" font-weight="500">LiveKit publisher pipeline</text>
+              <text x="325" y="282" text-anchor="middle" fill="currentColor" stroke="none" font-size="9" font-style="italic" opacity="0.75">screen-share-with-sound = dialer (same backend pressure)</text>
+
+              <!-- Result -->
+              <text x="300" y="312" text-anchor="middle" fill="currentColor" stroke="none" font-size="10" font-weight="500" letter-spacing="0.05em">→ 33 concurrent publishers verified under realistic load</text>
+
+            </g>
+          </svg>
+          <div class="diagram-caption">Power House · test architecture</div>
+        </div>
+        <p class="takeaway">
+          A lot of capacity questions get answered with "we think it's around X." Going and measuring it takes more design work but produces a number you can actually defend.
+        </p>
+      </div>
+      <div class="case-tags">
+        <span class="case-tag">electron</span>
+        <span class="case-tag">livekit</span>
+        <span class="case-tag">load</span>
+        <span class="case-tag">playwright</span>
+        <span class="case-tag">github-actions</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- AI QA SECTION -->
+  <section>
+    <div class="section-label">testing AI products</div>
+    <p class="opinions-intro">A short note, because most of my recent work has involved AI features and the testing practices are different.</p>
+    <div class="ai-grid">
+      <div class="ai-row">
+        <span class="what">Output Validation</span>
+        <span class="detail">Comparing AI-generated content against source material by hand, looking for the failure modes (hallucination, drift, mismatched answers, multiple valid answers marked as one). Flagging patterns back to the data science team.</span>
+      </div>
+      <div class="ai-row">
+        <span class="what">Prompt Regression</span>
+        <span class="detail">When a model or prompt changes, the same inputs need to produce the same kind of outputs. Tracking output quality across prompt iterations and model updates.</span>
+      </div>
+      <div class="ai-row">
+        <span class="what">Ranking Quality</span>
+        <span class="detail">For AI matching and ranking features (e.g. candidate ranking, search ranking), checking whether the top results are actually relevant or just plausible-looking.</span>
+      </div>
+      <div class="ai-row">
+        <span class="what">UI Around AI</span>
+        <span class="detail">The AI is usually a third-party integration, but the product around it isn't. Most bugs live in the user-facing layer: input handling, editing, exporting, organizing AI-generated content.</span>
+      </div>
+      <div class="ai-row">
+        <span class="what">What I Watch For</span>
+        <span class="detail">Plausible-looking output is the most dangerous kind. The AI can be confidently wrong in a way that the UI does nothing to flag. The job is to assume every "looks fine" output is suspect until verified.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUG REPORTS SECTION -->
+  <section>
+    <div class="section-label">sample bug reports</div>
+    <p class="bugs-intro">Sanitized examples in the format I use day to day. The bugs are real, the company and product names are not.</p>
+
+    <!-- Bug Report Sample 1 - placeholder, awaiting your real one -->
+    <div class="bug-report">
+      <div class="report-head">
+        <span class="severity critical">Critical</span>
+        <span class="report-id">BUG-2204</span>
+        <span class="report-context">EHR · Billing Module</span>
+      </div>
+      <h4>Therapy session charge miscalculated on specific billing-code boundary</h4>
+      <dl class="report-grid">
+        <dt>Steps</dt>
+        <dd>
+          <ol>
+            <li>Log in as therapist with billing permissions.</li>
+            <li>Schedule and complete a session using session type [REDACTED-X] at the billing-code boundary [REDACTED-CODE].</li>
+            <li>Navigate to Billing → Generate Claim.</li>
+            <li>Observe the calculated charge in the claim preview.</li>
+          </ol>
+        </dd>
+        <dt>Expected</dt>
+        <dd>Charge equals (base rate × session duration multiplier) + applicable modifiers, matching the published billing schedule.</dd>
+        <dt>Actual</dt>
+        <dd>Charge is under-calculated by the modifier amount on this specific session type. Reproducible across multiple test patients and dates.</dd>
+        <dt>Impact</dt>
+        <dd>Therapists using this session type would be under-billing for completed work. Revenue and compliance risk in a HIPAA-regulated product.</dd>
+        <dt>Notes</dt>
+        <dd>Manual verification against billing schedule confirms the formula is being applied incorrectly only at this boundary. Other session types calculate correctly.</dd>
+      </dl>
+    </div>
+
+    <!-- Bug Report Sample 2 -->
+    <div class="bug-report">
+      <div class="report-head">
+        <span class="severity high">High</span>
+        <span class="report-id">BUG-1138</span>
+        <span class="report-context">Virtual Office · Recording</span>
+      </div>
+      <h4>Recording indicator desync after UI merge: red light shows wrong state</h4>
+      <dl class="report-grid">
+        <dt>Steps</dt>
+        <dd>
+          <ol>
+            <li>Join Power House meeting room.</li>
+            <li>Click Record. Wait for confirmation.</li>
+            <li>Click Stop Record. Wait for confirmation.</li>
+            <li>Observe the recording indicator (red dot) in the top toolbar.</li>
+          </ol>
+        </dd>
+        <dt>Expected</dt>
+        <dd>Red recording indicator should disappear immediately after Stop Record is acknowledged.</dd>
+        <dt>Actual</dt>
+        <dd>Red indicator remains visible for 4-7 seconds after recording has actually stopped. Users believe recording is still active when it is not. Inverse case also happens: indicator briefly disappears mid-recording, making users think recording stopped.</dd>
+        <dt>Impact</dt>
+        <dd>Trust in recording state is broken. Users either keep recording when they think they've stopped, or stop talking when they think recording has paused. Both create real customer-facing problems in sales demos.</dd>
+        <dt>Notes</dt>
+        <dd>Bug surfaced after a UI merge that re-wired the recording state event listener. Underlying recording works correctly; only the visual indicator is desynced.</dd>
+      </dl>
+    </div>
+
+    <!-- Bug Report Sample 3 -->
+    <div class="bug-report">
+      <div class="report-head">
+        <span class="severity medium">Medium</span>
+        <span class="report-id">BUG-0867</span>
+        <span class="report-context">EdTech · AI Quiz Generator</span>
+      </div>
+      <h4>AI quiz generator produces questions with multiple valid answers</h4>
+      <dl class="report-grid">
+        <dt>Steps</dt>
+        <dd>
+          <ol>
+            <li>Open the AI quiz generator.</li>
+            <li>Paste a paragraph of source content covering a topic with ambiguous facts.</li>
+            <li>Generate a multiple-choice quiz with 5 questions.</li>
+            <li>Review each question against the source content.</li>
+          </ol>
+        </dd>
+        <dt>Expected</dt>
+        <dd>Each generated question should have exactly one correct answer that is verifiable from the source content.</dd>
+        <dt>Actual</dt>
+        <dd>For certain question types, more than one of the answer options is technically correct based on the source, but only one is marked as the correct answer. Students selecting a different (also correct) answer would be marked wrong.</dd>
+        <dt>Impact</dt>
+        <dd>Quiz integrity issue. Teachers using these quizzes in classrooms would mark students wrong for technically correct answers. Discovered before deployment to schools.</dd>
+        <dt>Notes</dt>
+        <dd>Reproducible with multiple input sources. AI module is third-party, but our validation layer should be catching this before quizzes are saved.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- TEST CASE SAMPLES -->
+  <section>
+    <div class="section-label">sample test cases</div>
+    <p class="bugs-intro">Sanitized examples showing how I structure test cases, with a focus on edge and boundary scenarios rather than only happy paths.</p>
+
+    <div class="testcase">
+      <div class="tc-head">
+        <span class="tc-id">TC-BILL-018</span>
+        <span class="tc-type">Boundary Value</span>
+      </div>
+      <div class="tc-title">Verify charge calculation at billing-code boundary transition</div>
+      <div class="tc-body">
+        <strong>Pre-conditions</strong>
+        Therapist account with billing permissions. Test patient with active insurance.
+        <strong>Steps</strong>
+        Complete sessions at the exact boundary value, one unit above it, and one unit below it. Generate claims for each.
+        <strong>Expected</strong>
+        Each charge matches the published billing schedule formula. Boundary transition handled correctly (no off-by-one in tier classification).
+      </div>
+    </div>
+
+    <div class="testcase">
+      <div class="tc-head">
+        <span class="tc-id">TC-AUTH-031</span>
+        <span class="tc-type">Negative</span>
+      </div>
+      <div class="tc-title">Verify session persistence after backend logout</div>
+      <div class="tc-body">
+        <strong>Pre-conditions</strong>
+        User logged into desktop app. Test admin has access to revoke sessions server-side.
+        <strong>Steps</strong>
+        Revoke the user's session server-side while the desktop app is still running. Attempt to take an authenticated action (open a meeting, send a message).
+        <strong>Expected</strong>
+        App detects invalid session, surfaces a clear re-auth prompt, and does not silently fail or expose stale data.
+      </div>
+    </div>
+
+    <div class="testcase">
+      <div class="tc-head">
+        <span class="tc-id">TC-STRIPE-014</span>
+        <span class="tc-type">Equivalence Partition</span>
+      </div>
+      <div class="tc-title">Subscription downgrade across plan tiers</div>
+      <div class="tc-body">
+        <strong>Pre-conditions</strong>
+        Test account on a paid tier. Stripe test mode enabled.
+        <strong>Steps</strong>
+        Downgrade from each higher tier to each lower tier (one case per valid pair). Verify webhook events fire correctly. Verify proration is calculated correctly.
+        <strong>Expected</strong>
+        Correct webhook event sequence (customer.subscription.updated). Proration credit matches Stripe's stated formula. Feature access reflects the new tier immediately.
+      </div>
+    </div>
+
+    <div class="testcase">
+      <div class="tc-head">
+        <span class="tc-id">TC-CALL-007</span>
+        <span class="tc-type">Edge Case</span>
+      </div>
+      <div class="tc-title">Concurrent screen-share with audio at session capacity</div>
+      <div class="tc-body">
+        <strong>Pre-conditions</strong>
+        Test fleet of multiple instances configured. Production-equivalent load profile.
+        <strong>Steps</strong>
+        Scale up concurrent screen-share-with-sound publishers in increments. At each level, validate publish success, audio quality, and reconnect behavior under simulated network jitter.
+        <strong>Expected</strong>
+        System sustains publish count up to the documented capacity. Beyond capacity, failures are graceful (clear error to user, no orphaned sessions, no resource leaks).
+      </div>
+    </div>
+
+    <div class="testcase">
+      <div class="tc-head">
+        <span class="tc-id">TC-NFC-003</span>
+        <span class="tc-type">Integration</span>
+      </div>
+      <div class="tc-title">NFC badge tap triggers correct downstream notification channels</div>
+      <div class="tc-body">
+        <strong>Pre-conditions</strong>
+        Physical NFC badge paired with a registered user. Notification preferences set to email + SMS + voice.
+        <strong>Steps</strong>
+        Tap badge on the touchscreen. Verify each downstream channel (email server, SMS gateway, voice API) receives the correct payload within the expected window.
+        <strong>Expected</strong>
+        All three channels deliver. Payload matches the badge holder's profile. Failure on one channel does not block delivery on the others.
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section>
+    <div class="section-label">testing methodology</div>
+    <p class="opinions-intro">The vocabulary, briefly, for the ways I approach a test plan.</p>
+    <div class="methodology-list">
+      <div class="item">
+        <strong>Boundary Value Analysis</strong>
+        Test the values on either side of every threshold. Off-by-one errors live here.
+      </div>
+      <div class="item">
+        <strong>Equivalence Partitioning</strong>
+        Split inputs into groups that should behave the same. Test one representative per group, not every value.
+      </div>
+      <div class="item">
+        <strong>Exploratory Testing</strong>
+        Unscripted, hypothesis-driven testing. Best for new features and for after a release when the spec doesn't cover what users will actually do.
+      </div>
+      <div class="item">
+        <strong>Negative Testing</strong>
+        Explicit tests for invalid inputs, broken states, and unauthorized actions. The happy path is the smallest part of any feature.
+      </div>
+      <div class="item">
+        <strong>Regression Testing</strong>
+        Automated coverage of the critical flows so manual time can focus on what changed and what's new.
+      </div>
+      <div class="item">
+        <strong>Risk-Based Testing</strong>
+        Test depth follows business impact. Payments, security, and data integrity get more attention than copy or styling.
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIONS -->
+  <section>
+    <div class="section-label">how I think about testing</div>
+    <p class="opinions-intro">A few things I've come to believe after four years of doing this.</p>
+
+    <div class="opinion">
+      <h4>The UI is a liar.</h4>
+      <p>When a calculation looks right on screen, that's the moment to check the math by hand. The UI is the last place a bug gets revealed, not the first. Most of the real bugs are in the layer underneath, and the UI is doing its best to hide them.</p>
+    </div>
+
+    <div class="opinion">
+      <h4>Test what you can't easily test.</h4>
+      <p>If something is expensive to test, that's usually the most important thing to test. Capacity. Real hardware. Production-equivalent load. The bugs that ship are almost always the ones nobody wanted to bother reproducing.</p>
+    </div>
+
+    <div class="opinion">
+      <h4>Automation is a tool, not a strategy.</h4>
+      <p>I use Playwright every day, but automation isn't the whole job. The best setup I've worked with combines targeted automation that guards the critical flows with manual exploration that finds the edge cases. "100% automated" QA tends to be 100% green and still missing the real bugs.</p>
+    </div>
+
+    <div class="opinion">
+      <h4>If you can't reproduce it, it isn't fixed.</h4>
+      <p>"Works on my machine" is the start of a bug investigation, not the end of one. Half the value of QA is the discipline of reproduction, the part where you actually find the conditions that cause the bug.</p>
+    </div>
+
+    <!-- Code snippet: shows real automation work -->
+    <div class="code-block">
+      <div class="code-head">
+        <span class="code-lang">// playwright + cdp · multi-user electron automation</span>
+        <span class="code-file">specs/multi-user/screen-share.spec.ts</span>
+      </div>
+<pre><code><span class="k">import</span> { test, expect } <span class="k">from</span> <span class="s">'@playwright/test'</span>;
+<span class="k">import</span> { attachToElectronApp, injectSession } <span class="k">from</span> <span class="s">'../helpers/cdp'</span>;
+
+test(<span class="s">'two users in Power House, host shares screen with sound'</span>, <span class="k">async</span> () =&gt; {
+  <span class="c">// each user runs in its own browser profile</span>
+  <span class="c">// session cookies injected per profile so reloads survive</span>
+  <span class="k">const</span> host  = <span class="k">await</span> attachToElectronApp({ profile: <span class="s">'zara'</span> });
+  <span class="k">const</span> guest = <span class="k">await</span> attachToElectronApp({ profile: <span class="s">'raiha'</span> });
+
+  <span class="k">await</span> injectSession(host,  <span class="s">'host.session.json'</span>);
+  <span class="k">await</span> injectSession(guest, <span class="s">'guest.session.json'</span>);
+
+  <span class="k">await</span> host.joinRoom(<span class="s">'power-house'</span>);
+  <span class="k">await</span> guest.joinRoom(<span class="s">'power-house'</span>);
+
+  <span class="k">await</span> host.startScreenShare({ withAudio: <span class="k">true</span> });
+
+  <span class="c">// guest should see the publisher within 3s</span>
+  <span class="k">await</span> expect(guest.publisherTile(<span class="s">'zara'</span>)).toBeVisible({ timeout: <span class="n">3000</span> });
+  <span class="k">await</span> expect(guest.audioLevel(<span class="s">'zara'</span>)).toBeGreaterThan(<span class="n">0</span>);
+});</code></pre>
+    </div>
+  </section>
+
+  <!-- CURRENTLY LEARNING -->
+  <section>
+    <div class="section-label">currently learning</div>
+    <div class="learning">
+      <p>Most of my AI testing so far has been manual: comparing model output against source content, watching for the failure modes, flagging patterns. The next direction I'm pushing on is <em>making that more systematic</em>, treating LLM outputs less like single answers to grade and more like distributions to measure.</p>
+      <p>Reading and experimenting with:</p>
+      <ul>
+        <li>Promptfoo and LangSmith for prompt regression and structured evals</li>
+        <li>The OpenAI evals framework and how teams build ground-truth datasets</li>
+        <li>Where deterministic QA breaks down for LLM outputs, and what replaces it</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="section-label">about</div>
+    <div class="about-prose">
+      <p>I started in mobile development, decided I preferred <em>breaking things to building them</em>, and have been doing QA ever since.</p>
+      <p>I've worked across regulated healthcare, a connected EdTech ecosystem of six products spanning web, Android, and touchscreen hardware, and currently I'm solo QA on a new Electron-based virtual office product, owning test strategy, automation, and release sign-off for a small engineering team.</p>
+      <p>The work I find most interesting is the kind where the UI looks fine, the dev tested it in staging, and somewhere underneath the math doesn't add up.</p>
+      <p class="personal">Outside of work, I write fiction. Usually about people stuck in places they can't leave.</p>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section>
+    <div class="section-label">stack</div>
+    <div class="stack-grid">
+      <div class="stack-row">
+        <span class="label">automation</span>
+        <span class="items">Playwright (TypeScript), CDP for Electron, Cypress, Selenium with Appium</span>
+      </div>
+      <div class="stack-row">
+        <span class="label">api & perf</span>
+        <span class="items">Postman (collections, contract testing), JMeter (load, stress, soak)</span>
+      </div>
+      <div class="stack-row">
+        <span class="label">ai_quality</span>
+        <span class="items">LLM output validation, prompt regression, ranking-quality checks</span>
+      </div>
+      <div class="stack-row">
+        <span class="label">payments</span>
+        <span class="items">Stripe subscription lifecycle, webhook event validation</span>
+      </div>
+      <div class="stack-row">
+        <span class="label">workflow</span>
+        <span class="items">Jira, Git/GitHub, Agile/Scrum, CI-integrated test runs</span>
+      </div>
+      <div class="stack-row">
+        <span class="label">languages</span>
+        <span class="items">TypeScript, JavaScript, Python</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>Zara Shafiq · 2026</div>
+    <svg class="cat-mini" viewBox="0 0 50 50">
+      <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 14 L16 6 L20 16 L30 16 L34 6 L40 14 C44 18 44 38 40 42 C36 46 14 46 10 42 C6 38 6 18 10 14 Z"/>
+        <circle cx="19" cy="24" r="1.5" fill="currentColor"/>
+        <circle cx="31" cy="24" r="1.5" fill="currentColor"/>
+        <path d="M23 32 Q25 34 27 32"/>
+      </g>
+    </svg>
+    <div>Islamabad, PK</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
