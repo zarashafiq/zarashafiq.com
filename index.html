@@ -71,7 +71,7 @@
   }
   .sidebar-top { flex: 1; }
 
-  .cats { margin-bottom: 40px; color: var(--ink); opacity: 0; animation: fadeIn 0.8s 0.1s forwards; }
+  .cats { margin-bottom: 28px; color: var(--ink); opacity: 0; animation: fadeIn 0.8s 0.1s forwards; }
   .cats svg { width: 250px; height: auto; }
 
   h1 {
@@ -89,7 +89,7 @@
     font-size: 21px;
     font-style: italic;
     color: var(--ink-soft);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     opacity: 0;
     animation: fadeUp 0.8s 0.25s forwards;
   }
@@ -98,7 +98,7 @@
     line-height: 1.65;
     color: var(--ink-muted);
     max-width: 300px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.8s 0.35s forwards;
   }
@@ -172,7 +172,7 @@
     letter-spacing: -0.01em;
   }
   .lead .mark { background: linear-gradient(transparent 58%, var(--highlight) 58%); color: var(--ink); padding: 0 2px; }
-  .about-body p { font-size: 15px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 18px; max-width: 600px; }
+  .about-body p { font-size: 15px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 18px; max-width: 560px; }
   .about-body .personal { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--ink-muted); }
 
   .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--rule); }
@@ -195,7 +195,7 @@
   .case-meta .id { color: var(--accent); font-weight: 600; }
   .case-meta .dot { color: var(--ink-faded); }
   .case h3 { font-family: 'Fraunces', serif; font-size: 25px; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 18px; max-width: 600px; }
-  .case-body p { font-size: 14.5px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 14px; max-width: 600px; }
+  .case-body p { font-size: 14.5px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 14px; max-width: 560px; }
   .case-body .takeaway { font-family: 'Fraunces', serif; font-style: italic; font-size: 16.5px; color: var(--ink); border-left: 2px solid var(--accent); padding-left: 16px; margin: 20px 0 4px; max-width: 600px; }
   .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
   .case-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: lowercase; letter-spacing: 0.03em; color: var(--ink-muted); background: var(--paper-soft); padding: 4px 9px; border-radius: 3px; }
@@ -241,7 +241,7 @@
   .methodology-list .item strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 5px; font-family: 'Fraunces', serif; font-size: 17px; }
 
   /* OPINIONS */
-  .opinion { margin-bottom: 30px; max-width: 640px; }
+  .opinion { margin-bottom: 30px; max-width: 600px; }
   .opinion h4 { font-family: 'Fraunces', serif; font-size: 25px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.18; margin-bottom: 9px; }
   .opinion p { font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); }
 
@@ -262,7 +262,7 @@
   .diagram-caption { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-muted); text-align: center; }
 
   /* LEARNING */
-  .learning { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.55; color: var(--ink-soft); max-width: 620px; }
+  .learning { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.55; color: var(--ink-soft); max-width: 560px; }
   .learning p { margin-bottom: 14px; }
   .learning em { font-style: italic; color: var(--ink); }
   .learning ul { list-style: none; margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.75; }
@@ -337,7 +337,7 @@
   <aside class="sidebar">
     <div class="sidebar-top">
       <div class="cats">
-        <svg viewBox="0 0 478 80" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="22 0 456 80" xmlns="http://www.w3.org/2000/svg">
           <g stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path d="M30 20 L42 8 L50 25 L88 25 L96 8 L108 20 C115 28 115 60 108 68 C100 75 38 75 30 68 C23 60 23 28 30 20 Z"/>
             <circle cx="52" cy="40" r="3.5" fill="currentColor"/>
@@ -385,7 +385,7 @@
 
     <div class="sidebar-bottom">
       <div class="socials">
-        <a href="mailto:zarashafiq195@gmail.com">email</a>
+        <a href="mailto:zarashafiq195@gmail.com" id="emailLink" data-email="zarashafiq195@gmail.com">email</a>
         <a href="https://www.linkedin.com/in/zara-shafiq-1b37b119a/" target="_blank" rel="noopener">linkedin</a>
         <a href="https://github.com/zarashafiq/qa-portfolio" target="_blank" rel="noopener">github</a>
         <a href="/resume.pdf" target="_blank" rel="noopener">resume</a>
@@ -710,6 +710,25 @@ test(<span class="s">'two users in Power House, host shares screen with sound'</
   }, { passive: true });
   window.addEventListener('resize', setActiveNav, { passive: true });
   setActiveNav();
+
+  // Email: copy to clipboard with confirmation (works even without a default mail app)
+  const emailLink = document.getElementById('emailLink');
+  if (emailLink) {
+    emailLink.addEventListener('click', (e) => {
+      const email = emailLink.dataset.email;
+      if (navigator.clipboard) {
+        e.preventDefault();
+        navigator.clipboard.writeText(email).then(() => {
+          const original = emailLink.textContent;
+          emailLink.textContent = 'copied!';
+          setTimeout(() => { emailLink.textContent = original; }, 1400);
+        }).catch(() => {
+          window.location.href = 'mailto:' + email;
+        });
+      }
+      // if clipboard API unavailable, the mailto href fires normally
+    });
+  }
 </script>
 
 </body>
