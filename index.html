@@ -161,18 +161,18 @@
     border-bottom: 1px solid var(--rule);
   }
   .block-head .num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500; }
-  .block-head h2 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; letter-spacing: -0.015em; }
+  .block-head h2 { font-family: 'Fraunces', serif; font-size: 31px; font-weight: 600; letter-spacing: -0.02em; }
 
   .lead {
     font-family: 'Fraunces', serif;
-    font-size: 28px;
-    line-height: 1.5;
+    font-size: 24px;
+    line-height: 1.48;
     color: var(--ink-soft);
     margin-bottom: 28px;
     letter-spacing: -0.01em;
   }
   .lead .mark { background: linear-gradient(transparent 58%, var(--highlight) 58%); color: var(--ink); padding: 0 2px; }
-  .about-body p { font-size: 16px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 18px; max-width: 620px; }
+  .about-body p { font-size: 15px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 18px; max-width: 600px; }
   .about-body .personal { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--ink-muted); }
 
   .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--rule); }
@@ -194,8 +194,8 @@
   .case-meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-muted); margin-bottom: 16px; }
   .case-meta .id { color: var(--accent); font-weight: 600; }
   .case-meta .dot { color: var(--ink-faded); }
-  .case h3 { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 500; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 18px; max-width: 600px; }
-  .case-body p { font-size: 15px; line-height: 1.72; color: var(--ink-soft); margin-bottom: 14px; max-width: 620px; }
+  .case h3 { font-family: 'Fraunces', serif; font-size: 25px; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 18px; max-width: 600px; }
+  .case-body p { font-size: 14.5px; line-height: 1.68; color: var(--ink-soft); margin-bottom: 14px; max-width: 600px; }
   .case-body .takeaway { font-family: 'Fraunces', serif; font-style: italic; font-size: 16.5px; color: var(--ink); border-left: 2px solid var(--accent); padding-left: 16px; margin: 20px 0 4px; max-width: 600px; }
   .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
   .case-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: lowercase; letter-spacing: 0.03em; color: var(--ink-muted); background: var(--paper-soft); padding: 4px 9px; border-radius: 3px; }
@@ -688,15 +688,28 @@ test(<span class="s">'two users in Power House, host shares screen with sound'</
 
   const navLinks = document.querySelectorAll('nav a');
   const sections = [...navLinks].map(a => document.getElementById(a.dataset.target)).filter(Boolean);
-  const navObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.id;
-        navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
-      }
-    });
-  }, { threshold: 0.3, rootMargin: '-20% 0px -60% 0px' });
-  sections.forEach(s => navObs.observe(s));
+
+  function setActiveNav() {
+    const scrollPos = window.scrollY + window.innerHeight * 0.3;
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.offsetTop <= scrollPos) current = s;
+    }
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 4) {
+      current = sections[sections.length - 1];
+    }
+    navLinks.forEach(a => a.classList.toggle('active', current && a.dataset.target === current.id));
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => { setActiveNav(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', setActiveNav, { passive: true });
+  setActiveNav();
 </script>
 
 </body>
