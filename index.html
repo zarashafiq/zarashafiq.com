@@ -166,6 +166,9 @@
     padding: 13px 16px; margin-top: 8px; max-width: 640px;
   }
   .takeaway::before { content: "+ "; font-weight: 700; }
+  .case-repo { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .case-repo a { color: var(--pass); text-decoration: none; }
+  .case-repo a:hover { text-decoration: underline; }
   .case-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
   .case-tag { font-family: var(--mono); font-size: 11px; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 20px; padding: 3px 11px; letter-spacing: 0.03em; }
 
@@ -327,6 +330,7 @@
           <li><a href="#tests" data-target="tests"><span class="dot"></span><span class="file">test_cases</span><span class="st">pass</span></a></li>
           <li><a href="#method" data-target="method"><span class="dot"></span><span class="file">methodology</span><span class="st">pass</span></a></li>
           <li><a href="#beliefs" data-target="beliefs"><span class="dot"></span><span class="file">how_i_think</span><span class="st">pass</span></a></li>
+          <li><a href="#learning" data-target="learning"><span class="dot"></span><span class="file">tools_built</span><span class="st">pass</span></a></li>
           <li><a href="#stack" data-target="stack"><span class="dot"></span><span class="file">stack</span><span class="st">pass</span></a></li>
         </ul>
       </nav>
@@ -502,6 +506,7 @@
           </div>
 
           <p class="takeaway">If you can't say what correct looks like, you can't test. For AI features, defining correct is most of the job.</p>
+          <p class="case-repo">The eval harness this grew into is public: <a href="https://github.com/zarashafiq/qa-portfolio" target="_blank" rel="noopener">github.com/zarashafiq/qa-portfolio</a></p>
         </div>
         <div class="case-tags"><span class="case-tag">llm-evals</span><span class="case-tag">golden-datasets</span><span class="case-tag">ai-search</span><span class="case-tag">p0</span><span class="case-tag">non-determinism</span></div>
       </article>
