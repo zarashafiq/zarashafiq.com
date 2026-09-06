@@ -80,12 +80,11 @@
     margin: 0 0 14px;
   }
   h1.name .l { position: relative; display: inline-block; }
-  h1.name .l::before, h1.name .l::after {
+  h1.name .l::after {
     content: attr(data-t);
     position: absolute; left: 0; top: 0; z-index: -1;
+    color: var(--fail); transform: translate(2px, 3px); opacity: 0.4;
   }
-  h1.name .l::before { color: var(--fail); transform: translate(-3px, 2px); opacity: 0.55; }
-  h1.name .l::after  { color: var(--pass); transform: translate(3px, -2px); opacity: 0.55; }
 
   .role-line { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: 0.02em; margin-bottom: 22px; }
   .role-line .exp { color: var(--fail); text-decoration: line-through; text-decoration-thickness: 1px; opacity: 0.85; }
@@ -107,10 +106,10 @@
   nav a:hover { color: var(--ink); }
   nav a:hover .file { transform: translateX(4px); }
   nav a.active { color: var(--ink); }
-  nav a.active .dot { background: var(--pass); box-shadow: 0 0 10px var(--pass); }
+  nav a.active .dot { background: var(--pass); }
   nav a.active .st { color: var(--pass); }
   nav a[data-target="bugs"] .dot { background: var(--fail); }
-  nav a[data-target="bugs"].active .dot { background: var(--fail); box-shadow: 0 0 10px var(--fail); }
+  nav a[data-target="bugs"].active .dot { background: var(--fail); }
   nav a[data-target="bugs"].active .st { color: var(--fail); }
 
   .sidebar-bottom { display: flex; flex-direction: column; gap: 18px; }
@@ -122,17 +121,15 @@
   }
   .socials a:hover { border-color: var(--pass); color: var(--pass); background: var(--pass-dim); }
   .available { font-family: var(--mono); font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 9px; }
-  .available::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pass); box-shadow: 0 0 9px var(--pass); animation: pulse 2.4s ease-in-out infinite; flex: none; }
+  .available::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pass); flex: none; }
   .available .loc { color: var(--ink-soft); }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
   /* ============ MAIN ============ */
   main { padding: 96px 0 60px; min-width: 0; }
   .block { margin-bottom: 120px; scroll-margin-top: 60px; }
 
   .block-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; }
-  .block-head .num { font-family: var(--mono); font-size: 13px; color: var(--pass); }
-  .block-head .num::before { content: "// "; color: var(--faint); }
+  .block-head .num { font-family: var(--mono); font-size: 13px; color: var(--pass); letter-spacing: 0.12em; }
   .block-head h2 {
     font-family: var(--disp); font-weight: 700; font-size: clamp(30px, 3.2vw, 42px);
     letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; text-wrap: balance;
@@ -146,8 +143,8 @@
   .lead .mark { background: linear-gradient(transparent 60%, var(--fail-dim) 60%); padding: 0 2px; }
   .about-body { max-width: 620px; display: flex; flex-direction: column; gap: 14px; }
   .about-body .personal { color: var(--muted); font-style: italic; }
-  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule-strong); border: 1px solid var(--rule-strong); margin-top: 44px; }
-  .metric { background: var(--bg-soft); padding: 20px 18px 16px; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; border-top: 1px solid var(--rule-strong); padding-top: 22px; margin-top: 44px; }
+  .metric { }
   .metric .num { font-family: var(--mono); font-weight: 700; font-size: clamp(26px, 2.6vw, 34px); color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; }
   .metric .plus { color: var(--pass); }
   .metric .label { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 8px; letter-spacing: 0.05em; }
@@ -213,8 +210,8 @@
   .tc-body strong { display: block; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 12px 0 3px; }
 
   /* methodology */
-  .methodology-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule-strong); border: 1px solid var(--rule-strong); }
-  .methodology-list .item { background: var(--bg-soft); padding: 20px 22px; font-size: 14px; color: var(--muted); }
+  .methodology-list { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 48px; }
+  .methodology-list .item { font-size: 14px; color: var(--muted); }
   .methodology-list .item strong { display: block; font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
 
   /* beliefs */
@@ -236,7 +233,7 @@
   .learning { font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); max-width: 640px; }
   .learning p { margin-bottom: 16px; }
   .learning ul { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 4px 0 18px; }
-  .learning li { border: 1px solid var(--rule-strong); background: var(--bg-soft); padding: 16px 20px; font-size: 14.5px; }
+  .learning li { padding-left: 20px; border-left: 2px solid var(--rule-strong); font-size: 14.5px; }
   .learning li a { font-family: var(--mono); font-size: 14px; color: var(--pass); text-decoration: none; }
   .learning li a:hover { text-decoration: underline; }
 
@@ -267,7 +264,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .available::before { animation: none; }
     * { transition: none !important; }
   }
 </style>
@@ -318,7 +314,7 @@
       </div>
 
       <h1 class="name"><span class="l" data-t="Zara">Zara</span><br><span class="l" data-t="Shafiq">Shafiq</span></h1>
-      <p class="role-line">expected: <span class="exp">software engineer</span><br>received: <span class="rec">QA engineer</span> <span style="color:var(--faint)">// works as intended</span></p>
+      <p class="role-line">expected: <span class="exp">software engineer</span><br>received: <span class="rec">QA engineer</span> <span style="color:var(--faint)">&mdash; works as intended</span></p>
       <p class="intro">Four years finding <span class="mark">the bugs other people miss</span> — in AI products, virtual collaboration software, and regulated healthcare.</p>
 
       <nav aria-label="Sections">
@@ -621,7 +617,7 @@
       <div class="opinion"><h4>If you can't reproduce it, it isn't fixed.</h4><p>"Works on my machine" is the start of a bug investigation, not the end of one. Half the value of QA is the discipline of reproduction, the part where you actually find the conditions that cause the bug.</p></div>
 
       <div class="code-block">
-        <div class="code-head"><span class="code-lang">// playwright + cdp · multi-user electron automation</span><span class="code-file">specs/multi-user/screen-share.spec.ts</span></div>
+        <div class="code-head"><span class="code-lang">playwright + cdp · multi-user electron automation</span><span class="code-file">specs/multi-user/screen-share.spec.ts</span></div>
 <pre><code><span class="k">import</span> { test, expect } <span class="k">from</span> <span class="s">'@playwright/test'</span>;
 <span class="k">import</span> { attachToElectronApp, injectSession } <span class="k">from</span> <span class="s">'../helpers/cdp'</span>;
 
