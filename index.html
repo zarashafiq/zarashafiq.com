@@ -400,7 +400,7 @@
       <div class="block-head"><span class="num">01</span><h2>About</h2></div>
       <p class="lead">I started in mobile development, decided I preferred <span class="mark">breaking things to building them</span>, and have been doing QA ever since.</p>
       <div class="about-body">
-        <p>I've worked across regulated healthcare, a connected EdTech ecosystem of six products spanning web, Android, and touchscreen hardware, and currently I'm solo QA on an Electron-based virtual office product, owning test strategy, automation, and release sign-off for a small engineering team.</p>
+        <p>I've worked across regulated healthcare, a connected EdTech ecosystem of six products spanning web, Android, and touchscreen hardware, and currently I'm the only QA at an AI startup, across three products: an AI people-search platform, a meeting transcriber, and a virtual office app. I own test strategy, automation, and release sign-off for all three.</p>
         <p>The work I find most interesting is the kind where the UI looks fine, the dev tested it in staging, and somewhere underneath the math doesn't add up.</p>
         <p class="personal">Outside of work, I write fiction. Usually about people stuck in places they can't leave.</p>
       </div>
@@ -502,6 +502,19 @@
         </div>
         <div class="case-tags"><span class="case-tag">electron</span><span class="case-tag">livekit</span><span class="case-tag">load</span><span class="case-tag">playwright</span><span class="case-tag">github-actions</span></div>
       </article>
+
+      <article class="case">
+        <div class="case-meta"><span class="id">CASE 04</span><span class="dot">&middot;</span><span>AI Search</span><span class="dot">&middot;</span><span>2026</span></div>
+        <h3>Making a non-deterministic AI search testable</h3>
+        <div class="case-body">
+          <p>Our flagship product is an AI people search. The core problem for QA: the same query doesn't return the same results twice. Standard assertions are useless against that. For a while, "the results look off" bugs were impossible to file properly, because nobody could say what the results were supposed to be.</p>
+          <p>I built the evaluation practice from nothing. First a golden dataset: a fixed set of queries where we agreed, human-verified, what good results look like. Then repeat-run measurement: fire the same query many times and measure how much the output moves. That second part produced the number that changed the conversation, because the same query was swinging 4x in result count between runs. Non-reproducibility stopped being a feeling and became a measured defect.</p>
+          <p>The worst find came from the same setup: a P0 where a query silently returned 0 results when the identical query had just returned 329. No error, no empty-state explanation, just nothing. That finding, plus the accumulated eval failures, fed a pipeline rebuild, and 20+ fixes were verified against my test plan before release.</p>
+          <p>The eval tooling outlived the bug hunt. Model or prompt changes now get checked against the golden set before they ship, so a regression shows up as a failed eval instead of a customer complaint.</p>
+          <p class="takeaway">If you can't say what correct looks like, you can't test. For AI features, defining correct is most of the job.</p>
+        </div>
+        <div class="case-tags"><span class="case-tag">llm-evals</span><span class="case-tag">golden-datasets</span><span class="case-tag">ai-search</span><span class="case-tag">p0</span><span class="case-tag">non-determinism</span></div>
+      </article>
     </section>
 
     <section class="block reveal" id="ai">
@@ -512,6 +525,8 @@
         <div class="ai-row"><span class="what">Prompt Regression</span><span class="detail">When a model or prompt changes, the same inputs need to produce the same kind of outputs. Tracking output quality across prompt iterations and model updates.</span></div>
         <div class="ai-row"><span class="what">Ranking Quality</span><span class="detail">For AI matching and ranking features (e.g. candidate ranking, search ranking), checking whether the top results are actually relevant or just plausible-looking.</span></div>
         <div class="ai-row"><span class="what">UI Around AI</span><span class="detail">The AI is usually a third-party integration, but the product around it isn't. Most bugs live in the user-facing layer: input handling, editing, exporting, organizing AI-generated content.</span></div>
+        <div class="ai-row"><span class="what">Scorers &amp; Golden Sets</span><span class="detail">This stopped being manual for me in 2026. I maintain an eval harness with three scorer families: rule-based checks, reference-overlap against a golden dataset, and LLM-as-judge with an injected model so CI runs cost nothing. It ships with a deliberate known-failure case, proof the checks actually catch regressions.</span></div>
+        <div class="ai-row"><span class="what">Red-Teaming</span><span class="detail">Adversarial suite mapped to the OWASP LLM Top 10: multi-turn attack sequences, canary-based prompt-leak detection, and a planted vulnerability the suite must find. Runs in CI, with promptfoo covering the same categories against live models.</span></div>
         <div class="ai-row"><span class="what">What I Watch For</span><span class="detail">Plausible-looking output is the most dangerous kind. The AI can be confidently wrong in a way that the UI does nothing to flag. The job is to assume every "looks fine" output is suspect until verified.</span></div>
       </div>
     </section>
@@ -637,15 +652,14 @@ test(<span class="s">'two users in Power House, host shares screen with sound'</
     </section>
 
     <section class="block reveal" id="learning">
-      <div class="block-head"><span class="num">—</span><h2>Currently Learning</h2></div>
+      <div class="block-head"><span class="num">—</span><h2>Tools I&rsquo;ve Built &amp; What&rsquo;s Next</h2></div>
       <div class="learning">
-        <p>Most of my AI testing so far has been manual: comparing model output against source content, watching for the failure modes, flagging patterns. The next direction I'm pushing on is <em>making that more systematic</em>, treating LLM outputs less like single answers to grade and more like distributions to measure.</p>
-        <p>Reading and experimenting with:</p>
+        <p>The AI testing stopped being manual this year. I now maintain two open-source projects that came straight out of the day job:</p>
         <ul>
-          <li>Promptfoo and LangSmith for prompt regression and structured evals</li>
-          <li>The OpenAI evals framework and how teams build ground-truth datasets</li>
-          <li>Where deterministic QA breaks down for LLM outputs, and what replaces it</li>
+          <li><a href="https://github.com/zarashafiq/playwright-flake-triage" target="_blank" rel="noopener"><strong>playwright-flake-triage</strong></a> &mdash; reads Playwright's JSON report and groups failures by root cause across 9 categories, so a hundred red tests become five or six real problems. CLI, MCP server, and Claude Code skill, on npm. Built after weeks of hitting retry on a "flaky" test that turned out to be a real ordering bug.</li>
+          <li><a href="https://github.com/zarashafiq/qa-portfolio" target="_blank" rel="noopener"><strong>qa-portfolio</strong></a> &mdash; the eval harness and red-team suite described above, plus Playwright multi-user patterns, runnable end to end.</li>
         </ul>
+        <p>Still on the list: deeper Python, and load-testing tools beyond JMeter (k6 next).</p>
       </div>
     </section>
 
@@ -654,9 +668,9 @@ test(<span class="s">'two users in Power House, host shares screen with sound'</
       <div class="stack-grid">
         <div class="stack-row"><span class="label">automation</span><span class="items">Playwright (TypeScript), CDP for Electron, Cypress, Selenium with Appium</span></div>
         <div class="stack-row"><span class="label">api &amp; perf</span><span class="items">Postman (collections, contract testing), JMeter (load, stress, soak)</span></div>
-        <div class="stack-row"><span class="label">ai_quality</span><span class="items">LLM output validation, prompt regression, ranking-quality checks</span></div>
+        <div class="stack-row"><span class="label">ai_quality</span><span class="items">Custom eval harness (rule-based, reference-overlap, LLM-as-judge scorers), golden datasets, promptfoo red-teaming vs the OWASP LLM Top 10</span></div>
         <div class="stack-row"><span class="label">payments</span><span class="items">Stripe subscription lifecycle, webhook event validation</span></div>
-        <div class="stack-row"><span class="label">workflow</span><span class="items">Jira, Git/GitHub, Agile/Scrum, CI-integrated test runs</span></div>
+        <div class="stack-row"><span class="label">workflow</span><span class="items">Jira, Git/GitHub, GitHub Actions, Agile/Scrum, LogRocket session-replay triage</span></div>
         <div class="stack-row"><span class="label">languages</span><span class="items">TypeScript, JavaScript, Python</span></div>
       </div>
 
